@@ -1,12 +1,12 @@
 <?php
 
 
-namespace unit\Process;
+namespace Test\Unit\Process;
 
 
-use PHPUnit\Framework\TestCase;
 use Lyratool\Process\ProcessFactory;
 use Symfony\Component\Process\Process;
+use Test\TestCase;
 
 class ProcessFactoryTest extends TestCase
 {
@@ -16,7 +16,8 @@ class ProcessFactoryTest extends TestCase
      */
     public function caseOne()
     {
-        $process = ProcessFactory::make(['ls'], null, null, null, 60);
+        $processFactory = new ProcessFactory();
+        $process = $processFactory->make(['ls'], null, null, null, 60);
 
         $this->assertInstanceOf(Process::class, $process);
     }
@@ -28,7 +29,9 @@ class ProcessFactoryTest extends TestCase
     public function caseTwo()
     {
         $commandLine = "cat";
-        $process = ProcessFactory::make([$commandLine], null, null, null, 60);
+
+        $processFactory = new ProcessFactory();
+        $process = $processFactory->make([$commandLine], null, null, null, 60);
 
         $this->assertStringContainsString($commandLine, $process->getCommandLine());
     }
@@ -41,7 +44,9 @@ class ProcessFactoryTest extends TestCase
     {
         $commandLine = "cat";
         $cwd = "/home";
-        $process = ProcessFactory::make([$commandLine], $cwd, null, null, 60);
+
+        $processFactory = new ProcessFactory();
+        $process = $processFactory->make([$commandLine], $cwd, null, null, 60);
 
         $this->assertStringContainsString($cwd, $process->getWorkingDirectory());
     }
@@ -54,7 +59,9 @@ class ProcessFactoryTest extends TestCase
     {
         $commandLine = "cat";
         $environments = ["FOO" => "BAR"];
-        $process = ProcessFactory::make([$commandLine], null, $environments, null, 60);
+
+        $processFactory = new ProcessFactory();
+        $process = $processFactory->make([$commandLine], null, $environments, null, 60);
 
         $this->assertSame($environments, $process->getEnv());
     }
@@ -67,7 +74,9 @@ class ProcessFactoryTest extends TestCase
     {
         $commandLine = "cat";
         $input = 'input-stream';
-        $process = ProcessFactory::make([$commandLine], null, null, $input, 60);
+
+        $processFactory = new ProcessFactory();
+        $process = $processFactory->make([$commandLine], null, null, $input, 60);
 
         $this->assertSame($input, $process->getInput());
     }
@@ -80,7 +89,9 @@ class ProcessFactoryTest extends TestCase
     {
         $commandLine = "cat";
         $timeout = floatval(60);
-        $process = ProcessFactory::make([$commandLine], null, null, null, $timeout);
+
+        $processFactory = new ProcessFactory();
+        $process = $processFactory->make([$commandLine], null, null, null, $timeout);
 
         $this->assertSame($timeout, $process->getTimeout());
     }
