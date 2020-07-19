@@ -28,11 +28,13 @@ class ExecTest extends TestCase
         $processFactoryMock->shouldReceive('make')
             ->withArgs($args)
             ->andReturn($processMock);
+        $processMock->shouldReceive('setTty')
+            ->andReturn($processMock);
         $processMock->shouldReceive('run');
         $processMock->shouldReceive('getOutput')->andReturn("executed");
 
         $exec = new Exec($processFactoryMock);
-        $processResult = $exec->run(['cat'], null, null, null, null);
+        $processResult = $exec->run(['cat'], null, null, null, null, false);
         $this->assertSame("executed", $processResult);
     }
 
@@ -46,11 +48,13 @@ class ExecTest extends TestCase
         $processMock = Mockery::mock(Process::class);
         $processFactoryMock->shouldReceive('make')
             ->andReturn($processMock);
+        $processMock->shouldReceive('setTty')
+            ->andReturn($processMock);
         $processMock->shouldReceive('run')
             ->andThrow(RuntimeException::class);
         $this->expectException(ExecException::class);
 
         $exec = new Exec($processFactoryMock);
-        $exec->run(['cat'], null, null, null, null);
+        $exec->run(['cat'], null, null, null, null, false);
     }
 }
