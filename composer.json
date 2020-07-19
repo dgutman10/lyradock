@@ -12,7 +12,8 @@
     "require": {
         "php": "7.2.*",
         "symfony/console": "^5.1",
-        "symfony/process": "^5.1"
+        "symfony/process": "^5.1",
+        "illuminate/container": "^7.20"
     },
     "autoload": {
         "psr-4": {
