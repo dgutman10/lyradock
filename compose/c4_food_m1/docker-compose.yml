@@ -33,6 +33,10 @@ services:
             - ${CWD}/src:/var/www:rw
         environment:
             - WEB_DOCUMENT_ROOT=/var/www
+            - XDEBUG_REMOTE_AUTOSTART=1
+            - XDEBUG_REMOTE_CONNECT_BACK=0
+            - XDEBUG_REMOTE_HOST=172.22.0.1
+            - PHP_IDE_CONFIG=serverName=c4_food_m1
         expose:
             - 9000
         networks:
