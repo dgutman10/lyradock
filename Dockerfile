@@ -13,4 +13,6 @@ COPY . /app
 
 WORKDIR /app
 
+RUN composer install
+
 ENTRYPOINT ["php", "./console.php"]
