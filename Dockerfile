@@ -15,4 +15,4 @@ WORKDIR /app
 
 RUN composer install
 
-ENTRYPOINT ["php", "./console.php"]
+ENTRYPOINT ["php", "./console.php", "lyra"]
