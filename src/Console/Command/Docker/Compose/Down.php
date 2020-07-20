@@ -40,7 +40,7 @@ class Down extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $output->writeln("<info>Deteniedo contenedores</info>");
+            $output->writeln("<info>Deteniendo contenedores</info>");
             $cwdParts = explode( '/', getenv('CWD'));
             $cwd = end($cwdParts);
             $result = $this->exec->run(["docker-compose", "down"], "/app/compose/{$cwd}", null, null, 60, true);
