@@ -7,6 +7,7 @@ namespace Lyratool\Console;
 use Exception;
 use Illuminate\Container\Container;
 use Lyratool\Console\Command\Docker\Compose\Down;
+use Lyratool\Console\Command\Docker\Compose\Logs;
 use Lyratool\Console\Command\Docker\Compose\Up;
 use Lyratool\Console\Command\Update;
 use Lyratool\Exception\KernelException;
@@ -22,9 +23,10 @@ class Kernel
     private $commands = [
         #Console
         Update::class,
-        # Docker
+        # Docker Compose
         Up::class,
-        Down::class
+        Down::class,
+        Logs::class
     ];
     /**
      * @var Container
