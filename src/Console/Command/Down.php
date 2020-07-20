@@ -9,12 +9,12 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Start extends Command
+class Down extends Command
 {
     /**
      * @var string the name of the command (the part after "bin/console")
      */
-    protected static $defaultName = 'start';
+    protected static $defaultName = 'down';
 
     /**
      * @var Exec
@@ -42,12 +42,12 @@ class Start extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("Iniciando contenedores");
+        $output->writeln("Deteniedo contenedores");
 
         $cwdParts = explode( '/', getenv('CWD'));
         $cwd = end($cwdParts);
 
-        $result = $this->exec->run(["docker-compose", "up", "-d"], "/app/compose/{$cwd}", null, null, 60, true);
+        $result = $this->exec->run(["docker-compose", "down"], "/app/compose/{$cwd}", null, null, 60, true);
 
         $output->writeln($result);
 

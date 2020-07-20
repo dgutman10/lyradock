@@ -1,0 +1,49 @@
+version: "3.3"
+
+networks:
+    default:
+        ipam:
+            driver: default
+            config:
+                - subnet: "172.22.0.0/24"
+
+volumes:
+  c4food-db:
+      driver: local
+
+services:
+    db:
+        image: mariadb
+        restart: always
+        container_name: c4food-database
+        volumes:
+            - c4food-db:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+        expose:
+          - 3306
+        networks:
+            default:
+                ipv4_address: "172.22.0.2"
+    php:
+        image: dgutman/c4food-backend
+        restart: always
+        container_name: c4food-backend
+        volumes:
+            - ${CWD}/src:/var/www:rw
+        environment:
+            - WEB_DOCUMENT_ROOT=/var/www
+        expose:
+            - 9000
+        networks:
+            default:
+                ipv4_address: "172.22.0.3"
+    nginx:
+        image: dgutman/c4food-webserver
+        restart: always
+        container_name: c4food-webserver
+        volumes:
+            - ${CWD}/src:/var/www:ro
+        networks:
+            default:
+                ipv4_address: "172.22.0.4"

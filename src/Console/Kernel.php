@@ -6,6 +6,7 @@ namespace Lyratool\Console;
 
 use Exception;
 use Illuminate\Container\Container;
+use Lyratool\Console\Command\Down;
 use Lyratool\Console\Command\Start;
 use Lyratool\Exception\KernelException;
 use Symfony\Component\Console\Application as Console;
@@ -18,7 +19,8 @@ class Kernel
     private $console;
 
     private $commands = [
-        Start::class
+        Start::class,
+        Down::class
     ];
     /**
      * @var Container
