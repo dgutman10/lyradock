@@ -21,7 +21,7 @@ class Kernel
     private $console;
 
     private $commands = [
-        #Console
+        # Console
         Update::class,
         # Docker Compose
         Up::class,
