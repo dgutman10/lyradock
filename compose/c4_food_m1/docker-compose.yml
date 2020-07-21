@@ -8,7 +8,7 @@ networks:
                 - subnet: "172.22.0.0/24"
 
 volumes:
-  c4food-db:
+  db:
       driver: local
 
 services:
@@ -17,7 +17,7 @@ services:
         restart: always
         container_name: c4food-database
         volumes:
-            - c4food-db:/var/lib/mysql
+            - db:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: secret
         expose:
