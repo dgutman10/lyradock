@@ -25,6 +25,14 @@ services:
         networks:
             default:
                 ipv4_address: "172.22.0.2"
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        networks:
+            default:
+                ipv4_address: "172.22.0.5"
     php:
         image: dgutman/c4food-backend
         restart: always
