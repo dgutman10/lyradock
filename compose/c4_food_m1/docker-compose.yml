@@ -61,33 +61,3 @@ services:
         networks:
             default:
                 ipv4_address: "172.22.0.4"
-    elasticsearch:
-        image: "docker.elastic.co/elasticsearch/elasticsearch:7.2.0"
-        environment:
-            - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-            - "discovery.type=single-node"
-        ports:
-            - "9200:9200"
-        volumes:
-            - elasticsearch_data:/usr/share/elasticsearch/data
-        networks:
-            default:
-                ipv4_address: "172.22.0.6"
-
-    kibana:
-        image: "docker.elastic.co/kibana/kibana:7.2.0"
-        ports:
-            - "5601:5601"
-        networks:
-            default:
-                ipv4_address: "172.22.0.7"
-
-    filebeat:
-        image: "dgutman/filebeat:7.2.0"
-        user: root
-        volumes:
-            - /var/lib/docker:/var/lib/docker:ro
-            - /var/run/docker.sock:/var/run/docker.sock
-        networks:
-            default:
-                ipv4_address: "172.22.0.8"
