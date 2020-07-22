@@ -32,7 +32,7 @@ class Ps extends Command
     protected function configure()
     {
         $this->setDescription('Lista los contenedores corriendo de compose')
-            ->setAliases(['down'])
+            ->setAliases(['ps'])
             ->setHelp('Debe correrse dentro de la carpeta de un proyecto')
         ;
     }
