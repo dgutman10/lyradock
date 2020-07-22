@@ -40,7 +40,7 @@ class Ps extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            $output->writeln("<info>Obteniendo información de contenedores...</info>");
+            $output->writeln("<info>Obteniendo información de los contenedores...</info>");
             $cwdParts = explode( '/', getenv('CWD'));
             $cwd = end($cwdParts);
             $result = $this->exec->run(["docker-compose", "ps"], "/app/compose/{$cwd}", null, null, null, true);
