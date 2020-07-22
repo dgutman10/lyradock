@@ -43,7 +43,7 @@ class Logs extends Command
             $output->writeln("<info>Preparando logs...</info>");
             $cwdParts = explode( '/', getenv('CWD'));
             $cwd = end($cwdParts);
-            $result = $this->exec->run(["docker-compose", "logs", "-f"], "/app/compose/{$cwd}", null, null, 60, true);
+            $result = $this->exec->run(["docker-compose", "logs", "-f"], "/app/compose/{$cwd}", null, null, null, true);
             $output->writeln($result);
 
             return Command::SUCCESS;

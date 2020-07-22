@@ -43,7 +43,7 @@ class Down extends Command
             $output->writeln("<info>Deteniendo contenedores</info>");
             $cwdParts = explode( '/', getenv('CWD'));
             $cwd = end($cwdParts);
-            $result = $this->exec->run(["docker-compose", "down"], "/app/compose/{$cwd}", null, null, 60, true);
+            $result = $this->exec->run(["docker-compose", "down"], "/app/compose/{$cwd}", null, null, null, true);
             $output->writeln($result);
 
             return Command::SUCCESS;
