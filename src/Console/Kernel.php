@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Container\Container;
 use Lyratool\Console\Command\Docker\Compose\Down;
 use Lyratool\Console\Command\Docker\Compose\Logs;
+use Lyratool\Console\Command\Docker\Compose\Ps;
 use Lyratool\Console\Command\Docker\Compose\Up;
 use Lyratool\Console\Command\Update;
 use Lyratool\Exception\KernelException;
@@ -26,6 +27,7 @@ class Kernel
         # Docker Compose
         Up::class,
         Down::class,
+        Ps::class,
         Logs::class
     ];
     /**
