@@ -40,7 +40,7 @@ class Update extends Command
     {
         try {
             $output->writeln("<info>Actualizando aplicación</info>");
-            $result = $this->exec->run(["docker", "pull", "dgutman/lyradock"], null, null, null, 60, true);
+            $result = $this->exec->run(["docker", "pull", "dgutman/lyradock"], null, null, null, null, true);
             $output->writeln($result);
 
             return Command::SUCCESS;
