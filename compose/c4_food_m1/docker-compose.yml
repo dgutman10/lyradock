@@ -15,7 +15,7 @@ volumes:
 
 services:
     db:
-        image: mariadb
+        image: dgutman/c4food-database
         restart: always
         container_name: c4food-database
         volumes:
@@ -30,8 +30,9 @@ services:
     adminer:
         image: adminer
         restart: always
-        ports:
-            - 8080:8080
+        container_name: c4food-adminer
+        expose:
+            - 8080
         networks:
             default:
                 ipv4_address: "172.22.0.5"
