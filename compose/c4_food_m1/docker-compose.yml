@@ -15,7 +15,7 @@ volumes:
 
 services:
     db:
-        image: dgutman/c4food-database
+        image: mariadb
         restart: always
         container_name: c4food-database
         volumes:

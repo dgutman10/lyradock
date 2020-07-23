@@ -10,6 +10,8 @@ use Lyratool\Console\Command\Docker\Compose\Down;
 use Lyratool\Console\Command\Docker\Compose\Logs;
 use Lyratool\Console\Command\Docker\Compose\Ps;
 use Lyratool\Console\Command\Docker\Compose\Up;
+use Lyratool\Console\Command\Kibana\Start;
+use Lyratool\Console\Command\Kibana\Stop;
 use Lyratool\Console\Command\Update;
 use Lyratool\Exception\KernelException;
 use Symfony\Component\Console\Application as Console;
@@ -24,6 +26,9 @@ class Kernel
     private $commands = [
         # Console
         Update::class,
+        # Kibana
+        Start::class,
+        Stop::class,
         # Docker Compose
         Up::class,
         Down::class,
